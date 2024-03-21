@@ -2,20 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice=createSlice({
     name:'todo',
-    initialState:{
-        todos:[]
-    },
+    initialState:[]
+,
     reducers:{
         addTodo:(state,action)=>{
-            state.todos.push(action.payload)
+            state.push(action.payload)
         },
         deleteTodo:(state,action)=>{
-           const newTodos= state.todos.filter(item=>item?.todoTitle!=action.payload)
-           state.todos=[...newTodos]
+          return state.filter((item,index)=>index!=action.payload)
         },
-        checkTodo:(state,action)=>{
-            
-        }
+        // checkTodo:(state,action)=>{
+        //     const currentTodo=state.find(item=>item.id==action.payload.id)
+        //     currentTodo.todoComplete=!action.payload.todoComplete
+
+        // }
         
     }
 })
